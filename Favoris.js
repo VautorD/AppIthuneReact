@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Favoris = () => {
   const [favoris, setFavoris] = useState([]);
 
+  //On recupère le favoris à partir du stockage local grace à AsyncStorage puis on les converties en objetJS grace à JSON.parse
   useEffect(() => {
     const fetchFavoris = async () => {
       try {

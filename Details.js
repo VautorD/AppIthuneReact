@@ -6,6 +6,8 @@ import Notes from './components/Notes';
 const Details = ({ route, navigation }) => {
   const { item } = route.params;
 
+  //On ajoute aux favoris en utilisant AsyncStorage
+  //On recupère la liste des fav pour y ajouter le morceau et en suitre on met à jour la liste
   const addToFavoris = async () => {
     try {
       const favoris = JSON.parse(await AsyncStorage.getItem('favoris')) || [];
@@ -18,6 +20,7 @@ const Details = ({ route, navigation }) => {
     }
   };
 
+  //Meme principe que la fonction d avant sauf que cette fois ci c est pour enregistrer la note
   const handleRate = async (note) => {
     try {
       const notes = JSON.parse(await AsyncStorage.getItem('notes')) || {};
@@ -30,7 +33,7 @@ const Details = ({ route, navigation }) => {
     }
   };
 
-  // Fonction pour convertir la durée qui etait en millisecondes en minutes
+  // Fonction pour convertir la durée du morceau qui etait en millisecondes en minutes
     const millisToMinutesAndSeconds = (millis) => {
         const minutes = Math.floor(millis / 60000);
         const seconds = ((millis % 60000) / 1000).toFixed(0);
